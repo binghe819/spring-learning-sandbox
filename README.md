@@ -1,4 +1,5 @@
-# 스프링 놀이터
+# 스프링 놀이터 - SpringMVC (Boot 없이)
+> 스프링부트없이 SpringMVC를 실험하는 놀이터
 
 <br>
 
