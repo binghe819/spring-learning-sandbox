@@ -17,6 +17,8 @@ public class WebApplication implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         // DispatcherServlet에 등록할 Application Context (IoC 컨테이너) 생성
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        // EnableMVC의 기본 설정에서 ServletContext를 사용하기 때문에 IoC컨테이너에 ServletContext를 설정해줘야한다.
+        context.setServletContext(servletContext);
         context.register(WebConfig.class);
         context.refresh();
 
