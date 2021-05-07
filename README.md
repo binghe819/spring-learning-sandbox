@@ -1,39 +1,38 @@
-# 스프링 놀이터 - 스프링 테스트
+# 스프링 놀이터 - 스프링 테스트 @DirtiesContext
+> https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/annotation/DirtiesContext.html
 
 <br>
 
-## 놀이터
-- [JUnit만으로 UserDao 테스트 (단위 테스트)](https://github.com/binghe819/spring-learning-sandbox/tree/test-only-junit)
-- [Spring Extension 테스트](https://github.com/binghe819/spring-learning-sandbox/tree/test-spring-extension)
+## 핵심 내용
+스프링에서 제공하는 `@SpringExtension`을 통한 테스트는 기본적으로 컨텍스트를 공유한다.
+
+즉, 통합 테스트가 기본적인 설정이다. 물론 하나의 클래스를 단독으로 테스트하면 이상이 없다. 
+
+하지만 모든 테스트 코드를 실행하게 되면 실패하는 테스트가 존재한다.
+
+앞선 테스트에서 특정 Bean의 속성값을 바꾸거나, 제거하거나, 추가하게 되면 다음에 오는 테스트를 실패하게 만들 수도 있는 것이다.
+
+이를 해결하는 방법은 `@DirtiesContext`다!
 
 <br>
 
-## DB 설정 방법
+### @DirtiesContext란?
+> It indicates the associated test or class modifies the ApplicationContext.
+> 
+> It tells the testing framework to close and recreate the context for later tests.
+
+* 이 어노테이션을 통해 테스트를 수행하기 전, 수행한 이후, 그리고 테스트의 각 테스트 케이스마다 수행하기 전, 수행한 이후에 context를 다시 생성하도록 지시할 수 있다.
 
 <br>
 
-### 외부에 따로 테스트 DB(H2)서버 사용
-> 스프링 부트처럼 내장 DB를 지원하지 않을때 테스트용으로 사용하기 좋다.
+### 사용법
+* 클래스 레벨
+    * `BEFORE_CLASS`: 클래스 단위의 테스트가 시작하기 전에 컨텍스트 생성 - FreshContextTests
+    * `BEFORE_EACH_TEST_METHOD`: 클래스의 모든 테스트 메서드마다 시작하기 전에 context 생성 - FreshContextTests
+    * `AFTER_CLASS`: 클래스 단위의 테스트가 모두 끝난 다음 context 생성 (default) - ContextDirtyingTests
+    * `AFTER_EACH_TEST_METHOD`: 클래스의 모든 테스트 메서드가 끝날 때 마다 context 재생성 - ContextDirtyingTests
+* 메서드 레벨
+    * `BEFORE_METHOD`: 특정 테스트 메서드 시작하기 전에 context 재생성 - FreshContextTests
+    * `AFTER_METHOD`: 특정 테스트 메서드를 시작한 이후 context 재생성 (default) - ContextDirtyingTests
 
-<br>
-
-#### H2 다운 및 실행
-1. [홈페이지](https://www.h2database.com/html/download.html)에서 다운 가능합니다!
-2. 다운 받은 압축파일을 풀고 `bin/h2.sh`를 실행시켜주면 h2 서버가 켜집니다!
-* 실행시 허가가 안된다면 chmod를 통해서 권한을 주면 됩니다 :) `sudo chmod +x ./bin/*.sh`
-* 정상적으로 실행된다면 h2 서버가 켜지고, h2-console이 웹페이지에 뜨게 됩니다.
-
-<br>
-
-#### TCP로 연결
-* 최초 한번 `jdbc:h2:~/test`을 실행해줍니다
-    * 해당 위치에 `~/test.mv.db`라는 파일이 생성됩니다. (굳이 확인 안해도 됩니다!)
-* 이후부터는 `jdbc:h2:tcp://localhost/~/test`을 사용하면 TCP로 H2 DB에 연결 가능합니다!!
-
-> test는 다른 이름으로 해도 됩니다 :)
-
-<br>
-
-#### 의존성 추가 및 DAO
-* H2 의존성을 gradle로 추가해줍니다
-* DataSource혹은 Connection을 Bean으로 등록하여 사용하면 된다.
+> 각 사용법의 테스트 코드는 test패키지 안에 있습니다!
