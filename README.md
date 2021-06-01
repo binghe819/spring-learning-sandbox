@@ -1,9 +1,5 @@
-# 스프링 놀이터 - SpringMVC (Boot 없이)
+# 스프링 놀이터 - SpringMVC (Boot 없이) - 요청 매핑
 > 스프링부트없이 SpringMVC를 실험하는 놀이터
 
-<br>
 
-## 놀이터 주제
-- 설정
-    - [@EnableWebMvc와 WebMvcConfigurer를 통한 SpringMVC 설정](https://github.com/binghe819/spring-learning-sandbox/tree/mvc-noboot-setting-enablewebmvc)
-    - [인터셉터 설정](https://github.com/binghe819/spring-learning-sandbox/tree/mvc-noboot-setting-interceptor)
+

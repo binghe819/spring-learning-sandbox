@@ -1,14 +1,16 @@
 package com.binghe;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
 
-    @GetMapping("/hello")
+    // RequestMapping을 사용하고 아무런 HTTP 메서드를 정의하지 않으면 모든 메서드를 처리할 수 있다.
+    @RequestMapping("/hello")
     public String hello() {
-        return "Hello " + "binghe";
+        return "Hello";
     }
-
 }
