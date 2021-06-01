@@ -13,4 +13,12 @@ public class HelloController {
     public String hello() {
         return "Hello";
     }
+
+    // RequestMapping의 method를 이용해서 원하는 HTTP 메서드만을 처리할 수 있다.
+    @RequestMapping(value = "/test", method = {RequestMethod.GET, RequestMethod.POST})
+    public String test() {
+        return "Test";
+    }
+
+
 }
