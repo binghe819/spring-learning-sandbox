@@ -12,6 +12,8 @@ repositories {
 
 dependencies {
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.9.RELEASE'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+    implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
 
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
