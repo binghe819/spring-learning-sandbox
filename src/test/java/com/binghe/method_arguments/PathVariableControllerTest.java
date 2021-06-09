@@ -61,4 +61,14 @@ class PathVariableControllerTest {
             .andDo(print())
             .andExpect(status().is(400));
     }
+
+    @DisplayName("@PathVariable(Optional) - URI 템플릿 변수에 Optional을 감쌀 수 있다. id가 있을 경우 템플릿 변수를 읽을 수 있다.")
+    @Test
+    void pathVariableOptionalWithId() throws Exception {
+        mockMvc.perform(get("/test/pathvariable/optional/1"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("id").value(1))
+            .andExpect(jsonPath("name").value("binghe"));
+    }
 }
