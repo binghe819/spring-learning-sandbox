@@ -30,4 +30,9 @@ public class RequestParamController {
         String name = param.get("name");
         return new Event(id, name);
     }
+
+    @GetMapping("/test/requestparam/binding")
+    public Event requestParamByBinding(Event event) {
+        return event;
+    }
 }

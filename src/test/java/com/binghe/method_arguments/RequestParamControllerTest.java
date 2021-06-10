@@ -85,13 +85,15 @@ class RequestParamControllerTest {
             .andExpect(jsonPath("name").value("binghe"));
     }
 
-    @DisplayName("Binding - MessageConverter를 설정해주면 자동 Biding해준다. 대신 @RequestParam애노테이션을 제거해야한다. (ModelAttribute를 사용하는듯")
+    @DisplayName("Binding - MessageConverter를 설정해주면 자동 Biding해준다. 대신 @RequestParam애노테이션을 제거해야한다. (ModelAttribute를 사용하는듯)")
     @Test
     void requestParamWithBinding() throws Exception {
         mockMvc.perform(get("/test/requestparam/binding")
                 .param("id", "1")
                 .param("name", "binghe"))
             .andDo(print())
-            .andExpect(status().isOk());
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("id").value(1))
+            .andExpect(jsonPath("name").value("binghe"));
     }
 }
