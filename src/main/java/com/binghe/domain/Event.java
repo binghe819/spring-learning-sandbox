@@ -1,7 +1,10 @@
 package com.binghe.domain;
 
+import javax.validation.constraints.Min;
+
 public class Event {
 
+    @Min(1)
     private Integer id;
     private String name;
 
