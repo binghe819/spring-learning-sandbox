@@ -12,6 +12,10 @@ repositories {
 
 dependencies {
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.2.9.RELEASE'
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '7.0.1.Final'
+    testImplementation group: 'org.glassfish', name: 'jakarta.el', version: '4.0.1'
+
+
 
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
