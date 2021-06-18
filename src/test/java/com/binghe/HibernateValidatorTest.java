@@ -1,6 +1,7 @@
 package com.binghe;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 import com.binghe.domain.User;
 import jakarta.validation.ConstraintViolation;
@@ -26,7 +27,11 @@ public class HibernateValidatorTest {
     @Test
     void validate() {
         // given
-        User invalidUser = new User("", false, 0, "binghe");
+        User invalidUser = new User();
+        invalidUser.setName("");
+        invalidUser.setWorking(false);
+        invalidUser.setAge(0);
+        invalidUser.setEmail("binghe");
 
         // when
         Set<ConstraintViolation<User>> violations = validator.validate(invalidUser);
