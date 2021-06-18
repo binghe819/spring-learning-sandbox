@@ -1,11 +1,13 @@
 package com.binghe.domain;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.util.List;
 
 public class User {
 
@@ -21,6 +23,9 @@ public class User {
 
     @Email(message = "이메일 형식이어야 합니다.")
     private String email;
+
+    @Valid
+    private List<Article> articles;
 
     public User() {
     }
@@ -62,5 +67,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }
