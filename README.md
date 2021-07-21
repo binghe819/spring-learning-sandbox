@@ -24,7 +24,24 @@ Spring은 Spring 3.2부터 `MockMvc`를 활용한 단위 테스트를 지원한�
 
 <br>
 
+## 번외 - @WebAppConfiguration
+* ApplicationContext and WebApplicationContext both are almost same thing but there are some basic differences related to the web aware environment.
+* In Spring ApplicationContext instances can be scoped. In the Web MVC framework, each DispatcherServlet has its own WebApplicationContext (i.e own *-servlet.xml), which inherits all the beans already defined in the root WebApplicationContext.
+* Yoc can also override the inherited bean scope in the servlet-specific scope and also can define new scope-specific beans local to a given servlet instance.
+
+<br>
+
+```java
+public interface WebApplicationContext extends ApplicationContext {
+    ServletContext getServletContext();
+}
+```
+* So we can say that both ApplicationContext and WebApplicationContext are the spring containers where WebApplicationContext is child of the ApplicationContext interface.
+    * ApplicationContext (RootApplicationContext) -> IoC 컨테이너
+    * WebApplicationContext -> IoC 컨테이너 + MVC 관련 빈 (표현 계층 관련된 빈)
+
+<br>
+
 ## 참고
 * https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-mvc-test-framework
-
-
+* https://www.dineshonjava.com/difference-between-applicationcontext-webapplicationcontext-in-spring-mvc/
