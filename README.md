@@ -7,7 +7,7 @@
 - [Spring Extension 테스트](https://github.com/binghe819/spring-learning-sandbox/tree/test-spring-extension)
 - [Spring @DirtiesContext](https://github.com/binghe819/spring-learning-sandbox/tree/test-dirties-context)
 - [@sql](https://github.com/binghe819/spring-learning-sandbox/tree/test-sql)
-- [MockMvc](https://github.com/binghe819/spring-learning-sandbox/tree/test-mockmvc)
+- [MockMvc, @WebappConfiguration](https://github.com/binghe819/spring-learning-sandbox/tree/test-mockmvc)
 
 <br>
 
