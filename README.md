@@ -6,6 +6,8 @@
 - [JUnit만으로 UserDao 테스트 (단위 테스트)](https://github.com/binghe819/spring-learning-sandbox/tree/test-only-junit)
 - [Spring Extension 테스트](https://github.com/binghe819/spring-learning-sandbox/tree/test-spring-extension)
 - [Spring @DirtiesContext](https://github.com/binghe819/spring-learning-sandbox/tree/test-dirties-context)
+- [@sql](https://github.com/binghe819/spring-learning-sandbox/tree/test-sql)
+- [MockMvc](https://github.com/binghe819/spring-learning-sandbox/tree/test-mockmvc)
 
 <br>
 
