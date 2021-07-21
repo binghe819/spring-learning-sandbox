@@ -37,7 +37,7 @@ public interface WebApplicationContext extends ApplicationContext {
 }
 ```
 * So we can say that both ApplicationContext and WebApplicationContext are the spring containers where WebApplicationContext is child of the ApplicationContext interface.
-    * ApplicationContext (RootApplicationContext) -> IoC 컨테이너
+    * ApplicationContext (RootApplicationContext) -> IoC 컨테이너 (Service, Repository, POJO)
     * WebApplicationContext -> IoC 컨테이너 + MVC 관련 빈 (표현 계층 관련된 빈)
 
 <br>
