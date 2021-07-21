@@ -1,40 +1,30 @@
-# 스프링 놀이터 - 스프링 테스트
+# 스프링 놀이터 - MockMvc
 
 <br>
 
-## 놀이터
-- [JUnit만으로 UserDao 테스트 (단위 테스트)](https://github.com/binghe819/spring-learning-sandbox/tree/test-only-junit)
-- [Spring Extension 테스트](https://github.com/binghe819/spring-learning-sandbox/tree/test-spring-extension)
-- [Spring @DirtiesContext](https://github.com/binghe819/spring-learning-sandbox/tree/test-dirties-context)
+## MockMvc란?
+Spring은 Spring 3.2부터 `MockMvc`를 활용한 단위 테스트를 지원한다.
+
+`MockMvc`는 기존의 `MockHttpServletRequest`, `MockHttpServletResponse`을 활용한 단위 테스트에서 발전되었다.
+
+즉, 전체 Spring MVC 요청 처리를 수행하지만 진짜 서버대신에 Mock요청과 Mock응답을 통해 요청을 수행한다.
+
+또한, Controller에 Service 객체를 Mock으로 주입하여 표현 계층에 대한 테스트에 집중할 수 있다.
+
+> 참고. `spring-test` 의존성을 추가하면 `MockMvc`를 사용할 수 있다.
 
 <br>
 
-## DB 설정 방법
+## SetUp
+* `MockMvcBuilders.standaloneSetup(new HelloController()).build()`
+    * 조금 더 단위 테스트에 가깝다. 매개변수로 주어진 Controller만 빈으로 등록하기 때문에.
+* `MockMvcBuilders.webAppContextSetup(this.wac).build()`
+    * `webAppContextSetup`는 실제 Spring MVC 구성을 로드하여 보다 통합에 가깝다.
+    * 즉, 테스트하는데 더 많은 시간이 들 수도 있다. 필요없는 빈까지 등록하기 때문에.
 
 <br>
 
-### 외부에 따로 테스트 DB(H2)서버 사용
-> 스프링 부트처럼 내장 DB를 지원하지 않을때 테스트용으로 사용하기 좋다.
+## 참고
+* https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-mvc-test-framework
 
-<br>
 
-#### H2 다운 및 실행
-1. [홈페이지](https://www.h2database.com/html/download.html)에서 다운 가능합니다!
-2. 다운 받은 압축파일을 풀고 `bin/h2.sh`를 실행시켜주면 h2 서버가 켜집니다!
-* 실행시 허가가 안된다면 chmod를 통해서 권한을 주면 됩니다 :) `sudo chmod +x ./bin/*.sh`
-* 정상적으로 실행된다면 h2 서버가 켜지고, h2-console이 웹페이지에 뜨게 됩니다.
-
-<br>
-
-#### TCP로 연결
-* 최초 한번 `jdbc:h2:~/test`을 실행해줍니다
-    * 해당 위치에 `~/test.mv.db`라는 파일이 생성됩니다. (굳이 확인 안해도 됩니다!)
-* 이후부터는 `jdbc:h2:tcp://localhost/~/test`을 사용하면 TCP로 H2 DB에 연결 가능합니다!!
-
-> test는 다른 이름으로 해도 됩니다 :)
-
-<br>
-
-#### 의존성 추가 및 DAO
-* H2 의존성을 gradle로 추가해줍니다
-* DataSource혹은 Connection을 Bean으로 등록하여 사용하면 된다.
