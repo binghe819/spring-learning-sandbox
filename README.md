@@ -5,4 +5,5 @@
 
 ## 놀이터 주제
 - 설정
-    - [@EnableWebMvc와 WebMvcConfigurer를 통한 SpringMVC 설정](https://github.com/binghe819/spring-learning-sandbox/tree/mvc-setting-enablewebmvc)
+    - [@EnableWebMvc와 WebMvcConfigurer를 통한 SpringMVC 설정](https://github.com/binghe819/spring-learning-sandbox/tree/mvc-noboot-setting-enablewebmvc)
+    - [인터셉터 설정](https://github.com/binghe819/spring-learning-sandbox/tree/mvc-setting-interceptor)
